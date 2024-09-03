@@ -11,7 +11,7 @@ from statsmodels.stats.diagnostic import acorr_ljungbox
 from statsmodels.tsa.seasonal import STL
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.tsa.stattools import adfuller
-from tqdm import tqdm_notebook
+from tqdm import tqdm
 
 warnings.filterwarnings('ignore')
 
@@ -131,7 +131,7 @@ def optimize_SARIMAX(endog: Union[pd.Series, list], exog: Union[pd.Series, list]
                      s: int) -> pd.DataFrame:
     results = []
 
-    for order in tqdm_notebook(order_list):
+    for order in tqdm(order_list):
         try:
             model = SARIMAX(
                 endog,
